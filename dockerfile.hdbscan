@@ -1,0 +1,21 @@
+# Copyright (c) Jupyter Development Team.
+# Distributed under the terms of the Modified BSD License.
+
+FROM mgt:5000/cytoflow
+
+LABEL maintainer="fcy <feicaiyi@gmail.com>"
+
+USER $NB_UID
+
+
+# Install conda as ttt and check the md5 sum provided on the download site
+
+# Install Jupyter Notebook and Hub
+RUN $CONDA_DIR/bin/conda install --quiet --yes -c conda-forge hdbscan && \
+    $CONDA_DIR/bin/conda clean -tipsy && \
+    npm cache clean --force && \
+    rm -rf $CONDA_DIR/share/jupyter/lab/staging && \
+    rm -rf /home/$NB_USER/.cache/yarn && \
+    fix-permissions $CONDA_DIR && \
+    fix-permissions /home/$NB_USER
+
