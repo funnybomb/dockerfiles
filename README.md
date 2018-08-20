@@ -2,8 +2,8 @@
 ```
 docker build -f Dockerfile.x -t xxx ./
 ```
-install install_cytoflow_utilies.dockerfile to install cytoflow
 
-1.dockfile first step of install_cytoflow_utillies
-2.dockfile seco
-2.dockfile seco
+1.Dockerfile.basebook : basic dockerfile for jupyter
+2.dockerfile.R : based on basebook
+3.dockerfile.cytoflow: based on basebook to install cytoflow to read *.fcs files
+4.dockerfile.hdbscan: based on cytoflow to install hdbscan to cluster data using hdbscan
